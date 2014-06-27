@@ -31,24 +31,21 @@ int main()
 int borrarCoincidencias(char *s1, char *s2)
 {
     int coincidencias = 0;
-
-    // Lo necesito para correr los caracteres y rellenar los espacios recortados.
     char *aux;
 
-    // El proceso termina cuando una de las cadenas se queda sin caracteres que leer.
-    while(*s1 != '\0' && *s2 != '\0')
+    while(*s1 && *s2)
     {
         if(*s1 == *s2)
         {
             aux = s1;
-            while(*aux != '\0')
+            while(*aux)
             {
                 *aux = *(aux+1);
                 aux++;
             }
 
             aux = s2;
-            while(*aux != '\0')
+            while(*aux)
             {
                 *aux = *(aux+1);
                 aux++;
@@ -56,8 +53,11 @@ int borrarCoincidencias(char *s1, char *s2)
 
             coincidencias++;
         }
-        *s1++;
-        *s2++;
+        else
+        {
+            s1++;
+            s2++;
+        }
     }
 
     return coincidencias;
